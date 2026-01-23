@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Job Application Form</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      font-family: Arial, sans-serif;
+      background: #f6f7fb;
+      margin: 0;
+      padding: 24px;
+    }
+    .container {
+      max-width: 820px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 24px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+    }
+    h1 { margin: 0 0 6px; }
+    p { margin: 0 0 18px; color: #555; }
+
+    form { margin-top: 16px; }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    .field { display: flex; flex-direction: column; gap: 6px; }
+    label { font-size: 14px; color: #333; }
+    input, select, textarea {
+      padding: 10px 12px;
+      border: 1px solid #d9d9e3;
+      border-radius: 8px;
+      font-size: 14px;
+      outline: none;
+    }
+    input:focus, select:focus, textarea:focus {
+      border-color: #6b7cff;
+      box-shadow: 0 0 0 3px rgba(107,124,255,0.15);
+    }
+
+    textarea { resize: vertical; min-height: 110px; }
+
+    .full { grid-column: 1 / -1; }
+
+    .row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .radio-group, .check-group {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      padding: 10px 12px;
+      border: 1px solid #d9d9e3;
+      border-radius: 8px;
+      background: #fafafe;
+    }
+    .radio-group label, .check-group label {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      font-size: 14px;
+      margin: 0;
+    }
+
+    .actions {
+      display: flex;
+      gap: 12px;
+      margin-top: 18px;
+    }
+    button {
+      border: none;
+      padding: 12px 16px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    .btn-primary { background: #6b7cff; color: #fff; }
+    .btn-secondary { background: #efeff6; color: #222; }
+
+    .note {
+      font-size: 12px;
+      color: #666;
+      margin-top: 10px;
+    }
+
+    @media (max-width: 720px) {
+      .grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Job Application Form</h1>
+    <p>Fill in your details and submit your application.</p>
+
+    <form action="#" method="post" enctype="multipart/form-data">
+      <div class="grid">
+        <div class="field">
+          <label for="fullName">Full Name *</label>
+          <input id="fullName" name="fullName" type="text" required placeholder="e.g., Anees Ansar" />
+        </div>
+
+        <div class="field">
+          <label for="email">Email *</label>
+          <input id="email" name="email" type="email" required placeholder="e.g., anees@email.com" />
+        </div>
+
+        <div class="field">
+          <label for="phone">Phone *</label>
+          <input id="phone" name="phone" type="tel" required placeholder="e.g., +49 123 456789" />
+        </div>
+
+        <div class="field">
+          <label for="location">Current Location *</label>
+          <input id="location" name="location" type="text" required placeholder="e.g., Berlin, Germany" />
+        </div>
+
+        <div class="field">
+          <label for="position">Position Applying For *</label>
+          <input id="position" name="position" type="text" required placeholder="e.g., Frontend Developer" />
+        </div>
+
+        <div class="field">
+          <label for="department">Department</label>
+          <select id="department" name="department">
+            <option value="">Select</option>
+            <option>Engineering</option>
+            <option>Design</option>
+            <option>Marketing</option>
+            <option>Sales</option>
+            <option>Operations</option>
+            <option>Other</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="employmentType">Employment Type *</label>
+          <select id="employmentType" name="employmentType" required>
+            <option value="">Select</option>
+            <option>Full-time</option>
+            <option>Part-time</option>
+            <option>Internship</option>
+            <option>Contract</option>
+            <option>Remote</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="experience">Years of Experience *</label>
+          <input id="experience" name="experience" type="number" min="0" max="50" required placeholder="e.g., 2" />
+        </div>
+
+        <div class="field">
+          <label for="salary">Expected Salary</label>
+          <input id="salary" name="salary" type="text" placeholder="e.g., 55,000 EUR/year" />
+        </div>
+
+        <div class="field">
+          <label for="startDate">Available Start Date</label>
+          <input id="startDate" name="startDate" type="date" />
+        </div>
+
+        <div class="field full">
+          <label>Work Authorization</label>
+          <div class="radio-group" role="radiogroup" aria-label="Work Authorization">
+            <label><input type="radio" name="workAuth" value="Yes" /> Authorized to work</label>
+            <label><input type="radio" name="workAuth" value="NeedsVisa" /> Needs visa sponsorship</label>
+          </div>
+        </div>
+
+        <div class="field full">
+          <label>Skills (select all that apply)</label>
+          <div class="check-group" role="group" aria-label="Skills">
+            <label><input type="checkbox" name="skills" value="HTML" /> HTML</label>
+            <label><input type="checkbox" name="skills" value="CSS" /> CSS</label>
+            <label><input type="checkbox" name="skills" value="JavaScript" /> JavaScript</label>
+            <label><input type="checkbox" name="skills" value="React" /> React</label>
+            <label><input type="checkbox" name="skills" value="Python" /> Python</label>
+            <label><input type="checkbox" name="skills" value="Other" /> Other</label>
+          </div>
+        </div>
+
+        <div class="field full">
+          <label for="portfolio">Portfolio / LinkedIn URL</label>
+          <input id="portfolio" name="portfolio" type="url" placeholder="https://..." />
+        </div>
+
+        <div class="field full">
+          <label for="resume">Upload Resume (PDF/DOC) *</label>
+          <input id="resume" name="resume" type="file" required accept=".pdf,.doc,.docx" />
+        </div>
+
+        <div class="field full">
+          <label for="coverLetter">Cover Letter / Message</label>
+          <textarea id="coverLetter" name="coverLetter" placeholder="Write a short message..."></textarea>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button class="btn-primary" type="submit">Submit Application</button>
+        <button class="btn-secondary" type="reset">Reset</button>
+      </div>
+
+      <div class="note">
+        * Required fields. This form is front-end only. To actually receive submissions, connect it to a backend (PHP/Node/FastAPI) or a service.
+      </div>
+    </form>
+  </div>
+</body>
+</html>
